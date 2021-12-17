@@ -27,7 +27,7 @@ def load_outpatient():
     outpatient = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_DataSci_507/main/Deployment_Streamlit/outpatient_2015.csv')
     return outpatient
 
-streamlit run st.title('HHA 507 Streamlit App')
+st.title('HHA 507 Streamlit App')
 
 
 
