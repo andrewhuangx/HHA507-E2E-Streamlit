@@ -97,10 +97,47 @@ st.dataframe(sbuinpatient)
 
 ## Answer 2
 st.header('Q2: What is the most expensive inpatient DRGs for Stony Brook?')
-st.subheader('SBUH IP DRGs Pivot Table')
-sbu_drg_pivot = sbuinpatient.pivot_table(index=['provider_id','provider_name','drg_definition'],values=['average_total_payments'])
+st.subheader('SBUH Inpatient DRGs Pivot Table')
+sbu_drg_pivot = sbuinpatient.pivot_table(index=['provider_id','drg_definition'],values=['average_total_payments'])
 sbu_drg_desc = sbu_drg_pivot.sort_values(['average_total_payments'], ascending=False)
 st.markdown('DRG stands for diagnostic related group. This is a classification system standardizing prospective payment to hospitals.')
-st.markdown('From the table the most expensive inpatient DRG code for Stony Brook Univeristy Hospital is 003, ECMO OR TRACH W MV >96 HRS OR PDX EXC FACE, MOUTH & NECK W MAJ O.R., where the average total payment is $21,667.00.')
+st.markdown('From the table the most expensive inpatient DRG code for SBUH is 003, ECMO OR TRACH W MV >96 HRS OR PDX EXC FACE, MOUTH & NECK W MAJ O.R.')
+st.markdown('This is followed by DRG codes 004,TRACH W MV 96+ HRS OR PDX EXC FACE, MOUTH & NECK W/O MAJ O.R., and 834, ACUTE LEUKEMIA W/O MAJOR O.R. PROCEDURE W MCC.')
 st.dataframe(sbu_drg_desc)
 
+## Question 3 Prep
+## Outpatient Data for SBU Hospital
+sbuoutpatient = outpatient[outpatient['provider_id']==330393]
+st.header('SBU Hospital Outpatient Data')
+st.markdown('This shows outpatient data for Stony Brook University Hospital.')
+st.dataframe(sbuoutpatient)
+
+## Answer 3
+st.header('Q3: What is the most expensive outpatient APCs for Stony Brook?')
+st.subheader('SBUH Outpatient APCs Pivot Table')
+sbu_apc_pivot = sbuoutpatient.pivot_table(index=['provider_id','apc'],values=['average_total_payments'])
+sbu_apc_desc = sbu_apc_pivot.sort_values(['average_total_payments'], ascending=False)
+st.markdown('APC stands for ambulatory payment classsifications. This is a classification system for outpatient services')
+st.markdown('From the table the most expensive outpatient APCs code for SBUH is ')
+st.markdown('')
+st.dataframe(sbu_apc_desc)
+
+
+
+
+## Question 4 Prep/Answer
+
+
+
+
+## Question 5 Prep
+## 
+
+
+## Answer 5
+
+## Question 6 Prep
+## 
+
+
+## Answer 6
