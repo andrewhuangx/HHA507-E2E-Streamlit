@@ -145,14 +145,14 @@ st.map(nyh_locations)
 st.markdown('In NYS most hospitals are condensed around NYC followed by Buffalo, Rochester, and Albany.')
 
 ## Question 6 Prep
-## Common Inpatient Discharges
+## Top 5 Common Inpatient Discharges
 inpatient_discharges = inpatient[inpatient['provider_state'] == 'NY']
 common_ipdischarges = inpatient_discharges.groupby('drg_definition')['total_discharges'].sum().nlargest(5)
 st.header('Common New York Inpatient Discharges')
 st.markdown('This disaplys the amount inpatient discharges for each DRG code in New York State.')
 st.dataframe(common_ipdischarges)
 
-## Common Outpatient Services
+## Top 5 Common Outpatient Services
 outpatient_services = outpatient[outpatient['provider_state'] == 'NY']
 common_opservices = outpatient_services.groupby('apc')['outpatient_services'].sum().nlargest(5)
 st.header('Common New York Outpatient Services')
@@ -160,4 +160,5 @@ st.markdown('This displays the amount outpatient services for each APC code in N
 st.dataframe(common_opservices)
 
 ## Answer 6
-st.markdown('')
+st.markdown('From the above charts we know DRG code 871, SEPTICEMIA OR SEVERE SEPSIS W/O MV 96+ HOURS W MCC, with 31,964 discharges is the most common inpatient discharge.')
+st.markdown('We also know APC code 0634, Hospital Clinic Visits, with a count of 1,460,708 is the most common outpatient service.')
