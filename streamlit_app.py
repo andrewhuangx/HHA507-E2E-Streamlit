@@ -118,15 +118,19 @@ st.subheader('SBUH Outpatient APCs Pivot Table')
 sbu_apc_pivot = sbuoutpatient.pivot_table(index=['provider_id','apc'],values=['average_total_payments'])
 sbu_apc_desc = sbu_apc_pivot.sort_values(['average_total_payments'], ascending=False)
 st.markdown('APC stands for ambulatory payment classsifications. This is a classification system for outpatient services')
-st.markdown('From the table the most expensive outpatient APCs code for SBUH is ')
-st.markdown('')
+st.markdown('From the table the most expensive outpatient APCs code for SBUH is 0074, Level IV Endoscopy Upper Airway.')
+st.markdown('This is followed by APC codes 0203, Level IV Nerve Injections, and 0377, Level II Cardiac Imaging.')
 st.dataframe(sbu_apc_desc)
 
 
 
 
 ## Question 4 Prep/Answer
-
+st.header('Q4: Which state has the most hospitals in the US?')
+st.subheader('Hospitals Per State')
+statehospitals = hospital['state'].value_counts().reset_index()
+st.bar_chart(data=statehospitals, width=0, height=0, use_container_width=True)
+st.markdown('')
 
 
 
