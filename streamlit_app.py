@@ -157,7 +157,7 @@ outpatient_services = outpatient[outpatient['provider_state'] == 'NY']
 common_opservices = outpatient_services.groupby('apc')['outpatient_services'].sum().reset_index()
 st.header('Common New York Outpatient Services')
 st.markdown('This displays the amount outpatient services for each APC code in New York State.')
-st.dataframe(outpatient_opservices)
+st.dataframe(common_opservices)
 
 ## Answer 6
 st.markdown('')
