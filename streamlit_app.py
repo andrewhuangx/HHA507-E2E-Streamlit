@@ -45,7 +45,7 @@ st.write('2: What is the most expensive inpatient DRGs for Stony Brook?')
 st.write('3: What is the most expensive outpatient APCs for Stony Brook?')
 st.write('4: Which state has the most hospitals in the US?')
 st.write('5: What kind of hospital distribution does New York have?')
-st.write('6: ')
+st.write('6: What are the most common inpatient and outpatient services in New York?')
 
 ## Load Datasets
 
@@ -142,10 +142,22 @@ nyh_locations['lat'] = pd.to_numeric(nyh_locations['lat'])
 
 ## Answer 5
 st.map(nyh_locations)
-st.markdown('hello')
+st.markdown('In NYS most hospitals are condensed around NYC followed by Buffalo, Rochester, and Albany.')
 
 ## Question 6 Prep
-## 
+## Common Inpatient Discharges
+inpatient_discharges = inpatient[inpatient['provider_state'] == 'NY']
+common_ipdischarges = inpatient_discharges.groupby('drg_definition')['total_discharges'].sum().reset_index()
+st.header('Common New York Inpatient Discharges')
+st.markdown('This disaplys the amount inpatient discharges for each DRG code in New York State.')
+st.dataframe(common_ipdischarges)
 
+## Common Outpatient Services
+outpatient_services = outpatient[outpatient['provider_state'] == 'NY']
+common_opservices = outpatient_services.groupby('apc')['outpatient_services'].sum().reset_index()
+st.header('Common New York Outpatient Services')
+st.markdown('This displays the amount outpatient services for each APC code in New York State.')
+st.dataframe(outpatient_opservices)
 
 ## Answer 6
+st.markdown('')
