@@ -148,6 +148,7 @@ st.markdown('In NYS most hospitals are condensed around NYC followed by Buffalo,
 ## Common Inpatient Discharges
 inpatient_discharges = inpatient[inpatient['provider_state'] == 'NY']
 common_ipdischarges = inpatient_discharges.groupby('drg_definition')['total_discharges'].sum().reset_index()
+discharges_desc = common_ipdischarges.sort_values(['total_discharges'], ascending=False)
 st.header('Common New York Inpatient Discharges')
 st.markdown('This disaplys the amount inpatient discharges for each DRG code in New York State.')
 st.dataframe(common_ipdischarges)
@@ -155,6 +156,7 @@ st.dataframe(common_ipdischarges)
 ## Common Outpatient Services
 outpatient_services = outpatient[outpatient['provider_state'] == 'NY']
 common_opservices = outpatient_services.groupby('apc')['outpatient_services'].sum().reset_index()
+services_desc = common_opservices.sort_values(['outpatient_services'], ascending=False)
 st.header('Common New York Outpatient Services')
 st.markdown('This displays the amount outpatient services for each APC code in New York State.')
 st.dataframe(common_opservices)
