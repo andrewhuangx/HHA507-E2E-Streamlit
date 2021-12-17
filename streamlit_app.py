@@ -122,23 +122,27 @@ st.markdown('From the table the most expensive outpatient APCs code for SBUH is 
 st.markdown('This is followed by APC codes 0203, Level IV Nerve Injections, and 0377, Level II Cardiac Imaging.')
 st.dataframe(sbu_apc_desc)
 
-
-
-
 ## Question 4 Prep/Answer
+## Bar Graph Comparing Number of Hospitals in Each State
 st.header('Q4: Which state has the most hospitals in the US?')
 st.subheader('Hospitals Per State')
 statehospitals = hospital['state'].value_counts().reset_index()
 st.bar_chart(data=statehospitals, width=0, height=0, use_container_width=True)
-st.markdown('')
-
-
+st.markdown('With 449 hospitals Texas has the most hospitals. This is followed by California at 378 and Florida at 209.')
 
 ## Question 5 Prep
-## 
-
+## Setting up a Map of NYS
+st.header('Q5: What kind of hospital distribution does New York have?')
+st.subheader('Map of New York Hospitals')
+nyh_locations = newyork['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
+nyh_locations['lon'] = nyh_locations['lon'].str.strip('(')
+nyh_locations = nyh_locations.dropna()
+nyh_locations['lon'] = pd.to_numeric(nyh_locations['lon'])
+nyh_locations['lat'] = pd.to_numeric(nyh_locations['lat'])
 
 ## Answer 5
+st.map(nyh_locations)
+st.markdown('hello')
 
 ## Question 6 Prep
 ## 
